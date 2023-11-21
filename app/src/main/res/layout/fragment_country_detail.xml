@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="selectedCountry"
+            type="com.helloworldstudios.countriesapp.model.Country" />
+    </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#D3D3D3"
         tools:context=".view.CountryDetailFragment">
 
         <ImageView
@@ -13,62 +19,63 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:scaleType="fitCenter"
-            android:minHeight="200dp"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="40dp"
-            android:src="@mipmap/ic_launcher"/>
+            android:minHeight="200dp"
+            android:scaleType="fitCenter"
+            android:downloadImage="@{selectedCountry.countryFlagUrl}"
+            android:src="@drawable/ic_downloading" />
 
         <TextView
             android:id="@+id/countryDetailFragmentCountryNameTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country name"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_below="@id/countryDetailFragmentIV"
             android:layout_centerHorizontal="true"
             android:layout_margin="5sp"
-            android:layout_below="@id/countryDetailFragmentIV"/>
+            android:text='@{"Country Name : " + selectedCountry.countryName}'
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/countryDetailFragmentCountryCapitalTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country capital"
-            android:textSize="16sp"
+            android:layout_below="@id/countryDetailFragmentCountryNameTV"
             android:layout_centerHorizontal="true"
             android:layout_margin="5sp"
-            android:layout_below="@id/countryDetailFragmentCountryNameTV"/>
+            android:text='@{"Country Capital : " + selectedCountry.countryCapital}'
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/countryDetailFragmentCountryRegionTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country region"
-            android:textSize="16sp"
+            android:layout_below="@id/countryDetailFragmentCountryCapitalTV"
             android:layout_centerHorizontal="true"
             android:layout_margin="5sp"
-            android:layout_below="@id/countryDetailFragmentCountryCapitalTV"/>
+            android:text='@{"Country Region : " + selectedCountry.countryRegion}'
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/countryDetailFragmentCountryCurrencyTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country Currency"
-            android:textSize="16sp"
+            android:layout_below="@id/countryDetailFragmentCountryRegionTV"
             android:layout_centerHorizontal="true"
             android:layout_margin="5sp"
-            android:layout_below="@id/countryDetailFragmentCountryRegionTV"/>
+            android:text='@{"Country Currency : " + selectedCountry.countryCurrency}'
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/countryDetailFragmentCountryLanguageTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Country Language"
-            android:textSize="16sp"
+            android:layout_below="@id/countryDetailFragmentCountryCurrencyTV"
             android:layout_centerHorizontal="true"
             android:layout_margin="5sp"
-            android:layout_below="@id/countryDetailFragmentCountryCurrencyTV"/>
+            android:text='@{"Country Language : " + selectedCountry.countryLanguage}'
+            android:textSize="16sp" />
 
     </RelativeLayout>
 </layout>
